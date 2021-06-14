@@ -1,0 +1,9 @@
+.weathercard {
+    width: 337px;
+    height: 548px;
+    margin: 60px auto;
+}
+
+.favorite-icon-color {
+    color:red;
+}
