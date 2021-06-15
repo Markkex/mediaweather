@@ -1,0 +1,12 @@
+.comments {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.edit-options {
+    display: block;
+    float: right;
+    justify-content: space-around;
+}
