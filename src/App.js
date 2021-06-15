@@ -5,12 +5,12 @@ import WeatherCard from "./Components/WeatherCard";
 function App() {
   const [count, setCount] = useState(0);
   const [weather, setWeather] = useState([]);
-  const [user, setUser] = useState([
+  const [users, setUsers] = useState([
     { id: 1, username: "RickRoss96", comment: "The weather is great!" },
     {
       id: 2,
       username: "TheGreatDonaldTrump",
-      comment: "The Weather is shinning, like my hair",
+      comment: "The Weather is shinning, like my hair!",
     },
   ]);
 
@@ -32,6 +32,8 @@ function App() {
       });
   };
 
+  
+
   return (
     <div className='App'>
       {typeof weather.main != "undefined" ? (
@@ -42,8 +44,8 @@ function App() {
           temperature={weather.main.temp}
           description={weather.weather[0].description}
           icon={weather.weather[0].icon}
-          user={user}
-          setUser={setUser}
+          users={users}
+          setUser={setUsers}
         />
       ) : (
         <div></div>
