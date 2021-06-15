@@ -5,6 +5,15 @@ import WeatherCard from "./Components/WeatherCard";
 function App() {
   const [count, setCount] = useState(0);
   const [weather, setWeather] = useState([]);
+  const [user, setUser] = useState([
+    { id: 1, username: "RickRoss96", comment: "The weather is great!" },
+    {
+      id: 2,
+      username: "TheGreatDonaldTrump",
+      comment: "The Weather is shinning, like my hair",
+    },
+  ]);
+
   const cityName = "Faro, pt";
   const apiKey = "b82a90a20a766e74488ea5e0c041ddd0";
 
@@ -25,16 +34,20 @@ function App() {
 
   return (
     <div className='App'>
-      <WeatherCard
-        count={count}
-        setCount={setCount}
-        locationName={weather.name}
-        temperature={weather.main.temp}
-        description={weather.weather.description}
-        icon={weather.weather.icon}
-        
-        
-      />
+      {typeof weather.main != "undefined" ? (
+        <WeatherCard
+          count={count}
+          setCount={setCount}
+          locationName={weather.name}
+          temperature={weather.main.temp}
+          description={weather.weather[0].description}
+          icon={weather.weather[0].icon}
+          user={user}
+          setUser={setUser}
+        />
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

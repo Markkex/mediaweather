@@ -11,18 +11,24 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-const WeatherCard = ({count, setCount, locationName, temperature, description, icon}) => {
- 
-    const counter = () => {
-        setCount(count + 1)
-    }
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+const WeatherCard = ({
+  count,
+  setCount,
+  locationName,
+  temperature,
+  description,
+  icon,
+}) => {
+  const counter = () => {
+    setCount(count + 1);
+  };
 
   return (
     <div className='weathercard'>
-       <Card>
+      <Card>
         <CardHeader
           avatar={
             <Avatar aria-label='weatheravatar' className>
@@ -32,21 +38,24 @@ const WeatherCard = ({count, setCount, locationName, temperature, description, i
           title='Media Weather'
           subheader={`Displaying weather in ${locationName}. But it could be on Mars.`}
         />
-        
+
         <CardContent>
-          <p>{temperature}</p>
-          <p>{description}</p>
-          <p>{icon}</p>
-          <hr />
+          <div className='weather-content'>
+            <div className="weather-text">
+              <p>{temperature}</p>
+              <p>{description}</p>
+            </div>
+          </div>
           Comments Component
         </CardContent>
-        <CardActions >
-            
-          <FavoriteIcon className="favorite-icon-color" onClick={counter} />
+        <CardActions>
+          <FavoriteIcon className='favorite-icon-color' onClick={counter} />
           {count}
           <form>
-            <TextField placeholder="Enter a Comment"></TextField>
-            <Button variant="contained" color="primary">Confirm</Button>
+            <TextField placeholder='Enter a Comment'></TextField>
+            <Button variant='contained' color='primary'>
+              Confirm
+            </Button>
           </form>
         </CardActions>
       </Card>

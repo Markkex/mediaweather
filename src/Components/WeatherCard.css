@@ -1,9 +1,23 @@
 .weathercard {
-    width: 337px;
-    height: 548px;
+    width: 500px;
     margin: 60px auto;
 }
 
 .favorite-icon-color {
     color:red;
+}
+
+.weather-content {
+    background-image: url("../media/5-Best-Free-and-Paid-Weather-APIs-2019-e1587582023501.png");
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-size:cover;
+    position: relative;
+}
+
+.weather-text {
+    position: absolute;
+    top: 70%;
+    left: 80%;
 }
