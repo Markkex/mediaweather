@@ -4,12 +4,12 @@ const Comments = ({users, setUsers}) => {
     console.log(users)
     return (
         <div> 
-            {users.map((user) => (
-                <div>
-                    <p>{user.username}</p>
-                    <p>{user.comment}</p>
-                </div>
-            ))}
+          {users.map((user) => (
+              <div>
+                  <p>{user.username}</p>
+                  <p>{user.comment}</p>
+              </div>
+          ))}
         </div>
     )
 }

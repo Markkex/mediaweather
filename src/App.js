@@ -45,7 +45,7 @@ function App() {
           description={weather.weather[0].description}
           icon={weather.weather[0].icon}
           users={users}
-          setUser={setUsers}
+          setUsers={setUsers}
         />
       ) : (
         <div></div>
