@@ -52,9 +52,12 @@ const WeatherCard = ({
           ))}
           
         </CardContent>
-        <CardActions>
+        <CardActions className="cardactions">
+          <div className="likebutton">
           <FavoriteIcon className='favorite-icon-color' onClick={counter} />
           {count}
+          </div>
+          
          <Form setUsers={setUsers} users={users}/>
         </CardActions>
       </Card>

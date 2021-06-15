@@ -1,5 +1,5 @@
 .weathercard {
-    width: 500px;
+    max-width: 450px;
     margin: 60px auto;
 }
 
@@ -22,3 +22,12 @@
     left: 80%;
 }
 
+.cardactions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.likebutton {
+    display: flex;
+}

@@ -10,3 +10,8 @@
     float: right;
     justify-content: space-around;
 }
+
+.modal {
+    width: 400px;
+    margin: 15% auto;
+}

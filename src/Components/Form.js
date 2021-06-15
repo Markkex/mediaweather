@@ -22,7 +22,7 @@ const Form = ({ setUsers, users }) => {
   
   
   return (
-    <div>
+    <div className="comments">
       <form onSubmit={onSubmit}>
         <TextField
           placeholder='Enter a Comment'
