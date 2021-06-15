@@ -47,7 +47,10 @@ const WeatherCard = ({
               <p>{description}</p>
             </div>
           </div>
-          <Comments users={users} setUsers={setUsers}/>
+          {users.map((user) => (
+            <Comments user={user} users={users} setUsers={setUsers}/>
+          ))}
+          
         </CardContent>
         <CardActions>
           <FavoriteIcon className='favorite-icon-color' onClick={counter} />

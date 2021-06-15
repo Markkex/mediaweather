@@ -3,11 +3,15 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 import "./Comments.css"
-const Comments = ({ users, setUsers }) => {
-  console.log(users);
+const Comments = ({ user, setUsers, users }) => {
+  const deleteComment = () => {
+    setUsers(users.filter((el) => el.id !== user.id));
+    console.log(user)
+  }
+
+  console.log(user);
   return (
     <div>
-      {users.map((user) => (
         <div className='comments'>
           <div>
             <p>{user.username}</p>
@@ -17,12 +21,12 @@ const Comments = ({ users, setUsers }) => {
             <Button>
               <EditIcon />
             </Button>
-            <Button>
+            <Button onClick={deleteComment}>
               <DeleteIcon />
             </Button>
           </div>
         </div>
-      ))}
+      
     </div>
   );
 };

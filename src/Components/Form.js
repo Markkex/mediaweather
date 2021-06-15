@@ -14,7 +14,7 @@ const Form = ({ setUsers, users }) => {
 
     setUsers([
       ...users,
-      { id: Math.random * 1000, username: "Flyaway", comment: input },
+      { id: Math.random() * 1000, username: "Flyaway", comment: input },
     ]);
 
     setInput("");
