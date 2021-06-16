@@ -6,7 +6,7 @@
 }
 
 .edit-options {
-    display: block;
+    display: flex;
     float: right;
     justify-content: space-around;
 }
