@@ -11,11 +11,11 @@ import Avatar from "@material-ui/core/Avatar";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Comments from "./Components/Comments";
 import Form from "./Components/Form";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [liked, setLiked] = useState(false)
+  const [count, setCount] = useState(2);
+  const [liked, setLiked] = useState(false);
   const [weather, setWeather] = useState(undefined);
   const [input, setInput] = useState("");
 
@@ -25,7 +25,6 @@ function App() {
       id: 2,
       username: "TheGreatDonaldTrump",
       comment: "The Weather is shinning, like my hair!",
-      
     },
   ]);
 
@@ -45,14 +44,34 @@ function App() {
         setWeather(result);
       });
   };
+
   const counterIncrease = () => {
     setCount(count + 1);
-    setLiked(true)
+    setLiked(true);
   };
+
   const counterDecrease = () => {
     setCount(count - 1);
-    setLiked(false)
+    setLiked(false);
   };
+
+  const CommentTextfieldChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const CommentOnSubmitForm = (e) => {
+    e.preventDefault();
+
+    if (input !== "") {
+      setUsers([
+        ...users,
+        { id: Math.random() * 1000, username: "Flyaway", comment: input.trim() },
+      ]);
+    }
+
+    setInput("");
+  };
+
   return (
     <div className='App'>
       {weather && (
@@ -98,7 +117,6 @@ function App() {
                   onClick={counterDecrease}
                 />
               )}
-
               {count}
             </div>
 
@@ -107,6 +125,8 @@ function App() {
               users={users}
               input={input}
               setInput={setInput}
+              CommentTextfieldChange={CommentTextfieldChange}
+              CommentOnSubmitForm={CommentOnSubmitForm}
             />
           </CardActions>
         </Card>

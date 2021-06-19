@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SendIcon from "@material-ui/icons/Send";
 import "./Form.css";
-const Form = ({ setUsers, users, input, setInput }) => {
-  
-  const textfieldChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if (input !== "") {
-      setUsers([
-        ...users,
-        { id: Math.random() * 1000, username: "Flyaway", comment: input.trim() },
-      ]);
-    }
-
-    setInput("");
-  };
-
+const Form = ({ input, CommentTextfieldChange, CommentOnSubmitForm }) => {
   return (
     <div className='comments'>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={CommentOnSubmitForm}>
         <TextField
           placeholder='Enter a Comment'
           value={input}
-          onChange={textfieldChange}
+          onChange={CommentTextfieldChange}
         ></TextField>
-        <Button color='primary' onClick={onSubmit}>
+        <Button color='primary' type='submit'>
           <SendIcon />
         </Button>
       </form>
