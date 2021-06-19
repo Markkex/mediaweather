@@ -22,11 +22,19 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [currentComment, setCurrentComment] = useState({});
   const [users, setUsers] = useState([
-    { id: 1, username: "RickRoss96", comment: "The weather is great!" },
+    {
+      id: 1,
+      username: "RickRoss96",
+      comment: "The weather is great!",
+      avatarimg:
+        "https://media-manager.noticiasaominuto.com/1920/naom_5a9a52c15b760.jpg",
+    },
     {
       id: 2,
       username: "TheGreatDonaldTrump",
       comment: "The Weather is shinning, like my hair!",
+      avatarimg:
+        "https://bordalo.observador.pt/v2/f:webp/rs:fill:750/q:85/c:2000:1123:nowe:0:0/plain/https://s3.observador.pt/wp-content/uploads/2021/03/18154311/30476296.jpg",
     },
   ]);
 
@@ -61,6 +69,7 @@ function App() {
     setInput(e.target.value);
   };
 
+  //Delete user + comment
   const handleDeleteClick = (id) => {
     const removeItem = users.filter((user) => {
       return user.id !== id;
@@ -68,6 +77,7 @@ function App() {
     setUsers(removeItem);
   };
 
+  //Create Comment
   const CommentOnSubmitForm = (e) => {
     e.preventDefault();
 
@@ -85,6 +95,7 @@ function App() {
     setInput("");
   };
 
+  //Edit Comment
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
 
@@ -99,18 +110,15 @@ function App() {
     setUsers(updatedItem);
   };
 
- 
-
   const handleEditInputChange = (e) => {
     setCurrentComment({ ...currentComment, comment: e.target.value });
-    
   };
 
   const handleCommentClick = (user) => {
     setIsEditing(true);
     setCurrentComment({ ...user });
   };
-  console.log(currentComment)
+
   return (
     <div className='App'>
       {weather && (
