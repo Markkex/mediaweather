@@ -144,7 +144,7 @@ function App() {
             </div>
             <div
               className={"comments-section"}
-              style={users.length >= 5 ? { overflow: "scroll" } : {}}
+              style={users.length >= 5 ? { overflow: "scroll" } : null}
             >
               {users.map((user) => (
                 <Comments
