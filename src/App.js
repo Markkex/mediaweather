@@ -118,7 +118,7 @@ function App() {
     setIsEditing(true);
     setCurrentComment({ ...user });
   };
-
+  console.log(users);
   return (
     <div className='App'>
       {weather && (
@@ -142,16 +142,21 @@ function App() {
                 <p>{weather.weather[0].description}</p>
               </div>
             </div>
-            {users.map((user) => (
-              <Comments
-                key={user.id}
-                user={user}
-                users={users}
-                setUsers={setUsers}
-                handleDeleteClick={handleDeleteClick}
-                handleCommentClick={handleCommentClick}
-              />
-            ))}
+            <div
+              className={"comments-section"}
+              style={users.length >= 5 ? { overflow: "scroll" } : {}}
+            >
+              {users.map((user) => (
+                <Comments
+                  key={user.id}
+                  user={user}
+                  users={users}
+                  setUsers={setUsers}
+                  handleDeleteClick={handleDeleteClick}
+                  handleCommentClick={handleCommentClick}
+                />
+              ))}
+            </div>
           </CardContent>
           <CardActions className='cardactions'>
             <div className='likebutton'>

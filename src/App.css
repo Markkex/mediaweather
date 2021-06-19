@@ -38,3 +38,11 @@
 .likebutton {
   display: flex;
 }
+
+.comments-section  {
+  max-height: 350px;
+}
+
+.overflow {
+  overflow:scroll;
+}

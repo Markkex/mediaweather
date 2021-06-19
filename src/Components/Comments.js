@@ -29,7 +29,7 @@ const Comments = ({ user, handleCommentClick, handleDeleteClick }) => {
           <Avatar alt={user.username} src={user.avatarimg} />
         </div>
         <div className="user-info">
-          <p>{user.username}</p>
+          <p><b>{user.username}</b></p>
           <p>{user.comment}</p>
         </div>
         <div className='edit-options'>
