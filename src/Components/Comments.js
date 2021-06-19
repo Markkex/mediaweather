@@ -5,7 +5,6 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import "./Comments.css";
@@ -28,8 +27,10 @@ const Comments = ({ user, handleCommentClick, handleDeleteClick }) => {
         <div>
           <Avatar alt={user.username} src={user.avatarimg} />
         </div>
-        <div className="user-info">
-          <p><b>{user.username}</b></p>
+        <div className='user-info'>
+          <p>
+            <b>{user.username}</b>
+          </p>
           <p>{user.comment}</p>
         </div>
         <div className='edit-options'>
