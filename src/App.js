@@ -12,13 +12,15 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import Comments from "./Components/Comments";
 import Form from "./Components/Form";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import EditCommentForm from "./Components/EditCommentForm";
 
 function App() {
   const [count, setCount] = useState(2);
   const [liked, setLiked] = useState(false);
   const [weather, setWeather] = useState(undefined);
   const [input, setInput] = useState("");
-
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentComment, setCurrentComment] = useState({});
   const [users, setUsers] = useState([
     { id: 1, username: "RickRoss96", comment: "The weather is great!" },
     {
@@ -59,19 +61,56 @@ function App() {
     setInput(e.target.value);
   };
 
+  const handleDeleteClick = (id) => {
+    const removeItem = users.filter((user) => {
+      return user.id !== id;
+    });
+    setUsers(removeItem);
+  };
+
   const CommentOnSubmitForm = (e) => {
     e.preventDefault();
 
     if (input !== "") {
       setUsers([
         ...users,
-        { id: Math.random() * 1000, username: "Flyaway", comment: input.trim() },
+        {
+          id: Math.random() * 1000,
+          username: "Flyaway",
+          comment: input.trim(),
+        },
       ]);
     }
 
     setInput("");
   };
 
+  const handleEditFormSubmit = (e) => {
+    e.preventDefault();
+
+    handleUpdateComment(currentComment.id, currentComment);
+  };
+
+  const handleUpdateComment = (id, updatedComment) => {
+    const updatedItem = users.map((user) => {
+      return user.id === id ? updatedComment : user;
+    });
+    setIsEditing(false);
+    setUsers(updatedItem);
+  };
+
+ 
+
+  const handleEditInputChange = (e) => {
+    setCurrentComment({ ...currentComment, comment: e.target.value });
+    
+  };
+
+  const handleCommentClick = (user) => {
+    setIsEditing(true);
+    setCurrentComment({ ...user });
+  };
+  console.log(currentComment)
   return (
     <div className='App'>
       {weather && (
@@ -101,12 +140,14 @@ function App() {
                 user={user}
                 users={users}
                 setUsers={setUsers}
+                handleDeleteClick={handleDeleteClick}
+                handleCommentClick={handleCommentClick}
               />
             ))}
           </CardContent>
           <CardActions className='cardactions'>
             <div className='likebutton'>
-              {liked == false ? (
+              {liked === false ? (
                 <FavoriteBorderIcon
                   className='favorite-icon-color'
                   onClick={counterIncrease}
@@ -119,15 +160,23 @@ function App() {
               )}
               {count}
             </div>
-
-            <Form
-              setUsers={setUsers}
-              users={users}
-              input={input}
-              setInput={setInput}
-              CommentTextfieldChange={CommentTextfieldChange}
-              CommentOnSubmitForm={CommentOnSubmitForm}
-            />
+            {isEditing ? (
+              <EditCommentForm
+                handleEditFormSubmit={handleEditFormSubmit}
+                handleEditInputChange={handleEditInputChange}
+                currentComment={currentComment}
+                setIsEditing={setIsEditing}
+              />
+            ) : (
+              <Form
+                setUsers={setUsers}
+                users={users}
+                input={input}
+                setInput={setInput}
+                CommentTextfieldChange={CommentTextfieldChange}
+                CommentOnSubmitForm={CommentOnSubmitForm}
+              />
+            )}
           </CardActions>
         </Card>
       )}

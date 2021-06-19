@@ -5,14 +5,9 @@ import Button from "@material-ui/core/Button";
 
 
 import "./Comments.css";
-const Comments = ({ user, setUsers, users }) => {
+const Comments = ({ user, handleCommentClick, handleDeleteClick }) => {
   
-  const handleDeleteClick = (id) => {
-    const removeItem = users.filter((user) => {
-      return user.id !== id;
-    });
-    setUsers(removeItem);
-  };
+ 
     
   return (
     <div>
@@ -22,7 +17,7 @@ const Comments = ({ user, setUsers, users }) => {
           <p>{user.comment}</p>
         </div>
         <div className='edit-options'>
-          <Button>
+          <Button onClick={() => handleCommentClick(user)}>
             <EditIcon />
           </Button>
           <Button onClick={() => handleDeleteClick(user.id)}>
