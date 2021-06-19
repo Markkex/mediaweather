@@ -3,8 +3,8 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SendIcon from "@material-ui/icons/Send";
 import "./Form.css";
-const Form = ({ setUsers, users }) => {
-  const [input, setInput] = useState("");
+const Form = ({ setUsers, users, input, setInput }) => {
+  
   const textfieldChange = (e) => {
     setInput(e.target.value);
   };

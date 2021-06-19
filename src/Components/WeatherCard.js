@@ -14,7 +14,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import Comments from "./Comments";
 import Form from "./Form";
 
-const WeatherCard = ({ count, setCount, data, users, setUsers }) => {
+const WeatherCard = ({ count, setCount, data, users, setUsers, input, setInput }) => {
   const counterIncrease = () => {
     setCount(count + 1);
   };
@@ -56,7 +56,7 @@ const WeatherCard = ({ count, setCount, data, users, setUsers }) => {
             {count}
           </div>
 
-          <Form setUsers={setUsers} users={users} />
+          <Form setUsers={setUsers} users={users} input={input} setInput={setInput} />
         </CardActions>
       </Card>
     </div>

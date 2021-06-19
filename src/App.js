@@ -5,6 +5,7 @@ import WeatherCard from "./Components/WeatherCard";
 function App() {
   const [count, setCount] = useState(0);
   const [weather, setWeather] = useState(undefined);
+  const [input, setInput] = useState("");
   const [users, setUsers] = useState([
     { id: 1, username: "RickRoss96", comment: "The weather is great!" },
     {
@@ -40,6 +41,8 @@ function App() {
           setCount={setCount}
           setUsers={setUsers}
           users={users}
+          input={input}
+          setInput={setInput}
         />
       )}
     </div>
