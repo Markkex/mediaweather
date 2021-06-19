@@ -11,6 +11,7 @@ import Avatar from "@material-ui/core/Avatar";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Comments from "./Components/Comments";
 import Form from "./Components/Form";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -87,7 +88,7 @@ function App() {
           <CardActions className='cardactions'>
             <div className='likebutton'>
               {liked == false ? (
-                <FavoriteIcon
+                <FavoriteBorderIcon
                   className='favorite-icon-color'
                   onClick={counterIncrease}
                 />
