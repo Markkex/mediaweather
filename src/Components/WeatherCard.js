@@ -11,20 +11,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-
 import Comments from "./Comments";
 import Form from "./Form";
-const WeatherCard = ({
-  count,
-  setCount,
-  locationName,
-  temperature,
-  description,
-  users,
-  setUsers
-  
-}) => {
-  const counter = () => {
+
+const WeatherCard = ({ count, setCount, data, users, setUsers }) => {
+  const counterIncrease = () => {
     setCount(count + 1);
   };
 
@@ -33,32 +24,39 @@ const WeatherCard = ({
       <Card>
         <CardHeader
           avatar={
-            <Avatar aria-label='weatheravatar' className>
-              <img src={imageAvatar} />
+            <Avatar aria-label='weatheravatar'>
+              <img src={imageAvatar} alt='Weather' />
             </Avatar>
           }
           title='Media Weather'
-          subheader={`Displaying weather in ${locationName}. But it could be on Mars.`}
+          subheader={`Displaying weather in ${data.name}. But it could be on Mars.`}
         />
         <CardContent>
           <div className='weather-content'>
-            <div className="weather-text">
-              <p>{temperature}</p>
-              <p>{description}</p>
+            <div className='weather-text'>
+              <p>{data.main.temp}</p>
+              <p>{data.weather[0].description}</p>
             </div>
           </div>
           {users.map((user) => (
-            <Comments user={user} users={users} setUsers={setUsers}/>
+            <Comments
+              key={user.id}
+              user={user}
+              users={users}
+              setUsers={setUsers}
+            />
           ))}
-          
         </CardContent>
-        <CardActions className="cardactions">
-          <div className="likebutton">
-          <FavoriteIcon className='favorite-icon-color' onClick={counter} />
-          {count}
+        <CardActions className='cardactions'>
+          <div className='likebutton'>
+            <FavoriteIcon
+              className='favorite-icon-color'
+              onClick={counterIncrease}
+            />
+            {count}
           </div>
-          
-         <Form setUsers={setUsers} users={users}/>
+
+          <Form setUsers={setUsers} users={users} />
         </CardActions>
       </Card>
     </div>

@@ -12,9 +12,11 @@ import "./Comments.css";
 const Comments = ({ user, setUsers, users }) => {
   const [open, setOpen] = useState(false);
 
-  const deleteComment = () => {
-    setUsers(users.filter((el) => el.id !== user.id));
-    console.log(user);
+  const handleDeleteClick = (id) => {
+    const removeItem = users.filter((user) => {
+      return user.id !== id;
+    });
+    setUsers(removeItem);
   };
 
   const handleOpen = () => {
@@ -30,10 +32,10 @@ const Comments = ({ user, setUsers, users }) => {
   const onSubmitUpdate = (e) => {
     e.preventDefault();
 
-    setUsers(...users,  {comment: update} );
+    setUsers({ ...users, comment: e.target.value });
 
     setUpdate("");
-    handleClose()
+    handleClose();
   };
 
   const updateChange = (e) => {
@@ -52,7 +54,7 @@ const Comments = ({ user, setUsers, users }) => {
           <Button onClick={handleOpen}>
             <EditIcon />
           </Button>
-          <Button onClick={deleteComment}>
+          <Button onClick={() => handleDeleteClick(user.id)}>
             <DeleteIcon />
           </Button>
         </div>
@@ -61,8 +63,8 @@ const Comments = ({ user, setUsers, users }) => {
         <div className='modal'>
           <Paper elevation={3}>
             <form onSubmit={onSubmitUpdate}>
-              <TextField value={update} onChange={updateChange} fullWidth />
-              <Button onChange={onSubmitUpdate}>
+              <TextField value={update} onChange={updateChange} />
+              <Button type='submit'>
                 <SendIcon />
               </Button>
             </form>

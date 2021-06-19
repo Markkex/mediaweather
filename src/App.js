@@ -4,7 +4,7 @@ import WeatherCard from "./Components/WeatherCard";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState(undefined);
   const [users, setUsers] = useState([
     { id: 1, username: "RickRoss96", comment: "The weather is great!" },
     {
@@ -28,27 +28,19 @@ function App() {
       .then((res) => res.json())
       .then((result) => {
         setWeather(result);
-        console.log(result);
       });
   };
 
-  
-
   return (
     <div className='App'>
-      {typeof weather.main != "undefined" ? (
+      {weather && (
         <WeatherCard
           count={count}
+          data={weather}
           setCount={setCount}
-          locationName={weather.name}
-          temperature={weather.main.temp}
-          description={weather.weather[0].description}
-          icon={weather.weather[0].icon}
-          users={users}
           setUsers={setUsers}
+          users={users}
         />
-      ) : (
-        <div></div>
       )}
     </div>
   );
